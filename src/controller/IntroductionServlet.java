@@ -27,7 +27,7 @@ public class IntroductionServlet extends HttpServlet {
         String res = null;
         HttpSession session = req.getSession(false);
         User user = new User();
-        if (session != null && introduction != "") {
+        if (session != null && !introduction.equals("")) {
             user = (User) session.getAttribute("已登录用户");
             user.setIntroduction(introduction);
             IntrosuctionDao introsuctionDao = new IntrosuctionDaoImpl();
@@ -45,5 +45,9 @@ public class IntroductionServlet extends HttpServlet {
         writer.write(res);
         writer.flush();
         writer.close();
+    }
+    @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect(req.getContextPath() + "/main.html");
     }
 }

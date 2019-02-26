@@ -20,7 +20,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse httpResp=(HttpServletResponse)resp;
         Object o=httpReq.getSession().getAttribute("已登录用户");
         if(o==null){
-            httpResp.sendRedirect(httpReq.getContextPath() + "/oldMain.html");
+            httpResp.sendRedirect(httpReq.getContextPath() + "/main.html");
             out.print("1.5");
         }else {
             chain.doFilter(req,resp);

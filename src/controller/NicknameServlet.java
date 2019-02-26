@@ -27,7 +27,7 @@ public class NicknameServlet extends HttpServlet {
         String res = null;
         HttpSession session = req.getSession(false);
         User user = new User();
-        if (session != null && nickname != "") {
+        if (session != null && !nickname.equals("")) {
             user = (User) session.getAttribute("已登录用户");
             user.setNickname(nickname);
             NicknameDao nicknameDao = new NicknameDaoImpl();
@@ -45,5 +45,9 @@ public class NicknameServlet extends HttpServlet {
         writer.write(res);
         writer.flush();
         writer.close();
+    }
+    @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect(req.getContextPath() + "/main.html");
     }
 }
