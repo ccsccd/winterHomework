@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册页</title>
+<link href="register.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.js" ></script>
+<script>
+        var a = 0;
+        var A,B,C,D,E,F;
+        function one(){
+        var userName=document.getElementById("userName").value;
+        if(userName==null || userName==""){
+        document.getElementById("mes").innerHTML="请输入用户名";
+        return false;
+        }else if(userName.length != 11){
+        document.getElementById("mes").innerHTML="格式不正确";
+        A = "";
+        } 
+        else{
+        A = document.getElementById("mes").innerHTML="<font color='green'>正确</font>";
+        }
+        }
+        function two(){
+        var password1=document.getElementById("password1").value;
+        if(password1==null || password1==""){
+        document.getElementById("mes1").innerHTML="请输入密码";
+        return false;
+        }else if(password1.length<6 || password1.length>20){
+        document.getElementById("mes1").innerHTML="格式不正确";
+        B = "";
+        } 
+        else{
+        B = document.getElementById("mes1").innerHTML="<font color='green'>正确</font>";
+        }
+        }
+        function three(){
+        var password2=document.getElementById("password2").value;
+        var password1=document.getElementById("password1").value;
+        if(password2==null || password2==""){
+        document.getElementById("mes2").innerHTML="请重新输入密码";
+        return false;
+        }else if(password2!=password1||password1.length<6 || password1.length>20){
+        document.getElementById("mes2").innerHTML="两次密码不一致";
+        C = "";
+        }
+        else{
+        C = document.getElementById("mes2").innerHTML="<font color='green'>正确</font>";
+        }
+        }
+        function four1(){
+        var year=document.getElementById("年份").value;
+        if(year==null || year=="" ){
+        document.getElementById("mes3").innerHTML="请输入年份";
+        return false;
+        }
+        else if(year < 1900||year > 2019){
+        document.getElementById("mes3").innerHTML="需输入1900~2019的年份";
+        D = "";
+        four2();
+        four3();
+        } 
+        else{
+        D = document.getElementById("mes3").innerHTML="<font color='green'>正确</font>";   
+        }
+        }
+        function four2(){
+        var month=document.getElementById("月份").value;
+        if( month==null || month=="" ){
+        document.getElementById("mes4").innerHTML="请输入月份";
+        return false;}
+        else if(month<1 || month >12){
+        document.getElementById("mes4").innerHTML="月份不正确";
+        E = "";
+        four1();
+        four3();
+        }
+        else{
+        E = document.getElementById("mes4").innerHTML="<font color='green'>正确</font>";
+         }   
+        }
+        function four3(){
+        var year=document.getElementById("年份").value;
+        var month=document.getElementById("月份").value;
+        var date=document.getElementById("日期").value;
+        var isLeap=year%4;
+        if(date==null || date==""){
+        document.getElementById("mes5").innerHTML="请输入日期";
+        return false;
+        }
+        else if((month==1&&(date<1 || date >31))||(month==2&&isLeap!=0&&(date<1 || date >28))||(month==2&&isLeap==0&&(date<1 || date >29))||(month==3&&(date<1 || date >31))||(month==4&&(date<1 || date >30))||(month==5&&(date<1 || date >31))||(month==6&&(date<1 || date >30))||(month==7&&(date<1 || date >31))||(month==8&&(date<1 || date >31))||(month==9&&(date<1 || date >30))||(month==10&&(date<1 || date >31))||(month==11&&(date<1 || date >30))||(month==12&&(date<1 || date >31))){
+        document.getElementById("mes5").innerHTML="日期不正确";
+        F = "";
+        four1();
+        four2();
+        }
+        else{
+        F = document.getElementById("mes5").innerHTML="<font color='green'>正确</font>";
+         }   
+        }
+        function take(){
+            if(A=="<font color='green'>正确</font>" && B=="<font color='green'>正确</font>" && C == "<font color='green'>正确</font>"&& D == "<font color='green'>正确</font>" &&E == "<font color='green'>正确</font>"&&F == "<font color='green'>正确</font>"){
+                document.form1.submit()
+            }
+            else{
+            alert("您还未正确填写信息！");
+            }
+        }
+       
+       </script>
+</head>
+<body>
+<div class="topline"> </div>
+<div class="middle">
+    <div class="middle_banner"><div class="middle_banner_top"></div></div>
+    <div class="middle_box">
+        <div class="middle_box_title">
+            <span class="middle_box_title1">个人注册</span>
+            <span class="middle_box_title2">丨</span>
+            <span>官方注册</span>
+        </div>
+        <div class="middle_box_inner">
+            <div class="middle_box_inner_form">
+                <form action="Register" method="post" name="form1">
+                <div class="first">
+                    <img src="images\手机.png">
+                    <span class="first_span1">*</span>
+                    <span class="first_span2">手机：</span>
+                    <div class="first_line">
+                        <div class="first_line_pct"></div> 
+                        <input placeholder="请输入你的手机号" type="number" name="手机号" maxlength="11" id="userName"  oninput="one()" >
+                        <span id="mes" style="color:red;font-size:10px;"></span>
+                    </div>
+                </div>
+                <div class="second">
+                        <span class="second_span1">*</span>
+                        <span class="second_span2">设置密码：</span>
+                        <input placeholder="请输入6-20位的密码" type="password" name="密码" maxlength="20" id="password1" oninput="two()" >
+                        <span id="mes1" style="color:red;font-size:10px;"></span>
+                </div>
+                <div class="second_double">
+                        <span class="second_dspan1">*</span>
+                        <span class="second_dspan2">确认密码：</span>
+                        <input placeholder="请输入6-20位的密码" type="password" name="密码2" maxlength="20" id="password2" oninput="three()" >
+                        <span id="mes2" style="color:red;font-size:10px;"></span>
+                </div>
+                <div class="third">
+                        <span class="third_span1">*</span>
+                        <span class="third_span2">生日：</span>
+                        <input type="number" name="年份"  id="年份" oninput="four1()"><span>年</span><input type="number" name="月份" maxlength="2" id="月份" oninput="four2()"><span>月</span><input type="number" name="日期" maxlength="2" id="日期" oninput="four3()"><span>日</span>
+                        <span id="mes3" style="color:red;font-size:10px;"></span>
+                        <span id="mes4" style="color:red;font-size:10px;"></span>
+                        <span id="mes5" style="color:red;font-size:10px;"></span>
+                </div>
+                <div class="forth">
+                    <input type="button" value="注册" style="background:#fa7d3c;border:1px solid rgb(255, 102, 0);width:200px;height:30px;color:white;font-size: 17px;
+                    position:relative;left:80px;top:100px;" onclick="take()">
+                </div>
+                </form> 
+                <div class="fifth">
+                    <a href="https://weibo.com/" class="fif_a1">微博服务使用协议</a><br />
+                    <a href="https://weibo.com/" class="fif_span2">微博个人信息保护政策</a><br />
+                    <a href="https://weibo.com/" class="fif_span3">全国人大常委会关于加强网络信息保护的决定</a><br />
+                </div>
+            </div>
+            <div class="middle_box_inner_right">
+                <div class="firstline">
+                    <span>已有账号，</span>
+                    <a href="main.html">直接登录》</a>
+                    <p>微博注册帮助</p>
+                </div>
+                <div class="secondline">
+                    <ul class="secondline_ul">
+                        <li class="secondline_li">
+                            <img src="images\数字-1.png">
+                            <a href="https://help.weibo.com/faq/q/76/15955#15955">微博注册操作指南</a>
+                        </li>
+                        <li class="secondline_li">
+                            <img src="images\数字-2.png">
+                            <a href="https://help.weibo.com/faq/q/200/13091#13091">手机注册时提示手机号码已被绑定怎么办?</a>
+                        </li>
+                        <li class="secondline_li">
+                            <img src="images\数字-3.png">
+                            <a href="https://help.weibo.com/faq/q/200/276#276">注册微博时昵称显示“已经被注册”如何处理?</a>
+                        </li>
+                        <li class="secondline_li">
+                            <img src="images\数字-4.png">
+                            <a href="https://help.weibo.com/faq/q/200/13043#13043">注册时提示"你所使用的IP地址异常",该怎么办?</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

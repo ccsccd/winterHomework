@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>微博主页</title>
+<script src="/js/jquery-1.8.3.js" charset="utf-8"></script>
+<link href="main.css" rel="stylesheet" type="text/css">
+    <script>
+        debugger;
+        $("#submit").click();
+        $("#form").load(function(){
+            var xmlhttp=$(this).contents().find("body").text();
+            // if (window.XMLHttpRequest)
+            // {
+            //     xmlhttp=new XMLHttpRequest();
+            // }
+            // else
+            // {
+            //     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            // }
+            // xmlhttp.open("GET","/Login",true);
+            // xmlhttp.send();
+            // if(xmlhttp.responseText='{"status":"10001","data":"用户名或密码错误"}')
+            // {
+            //     document.getElementById("promot_inner").style.display="block";
+            // }
+            // if(xmlhttp.responseText='{"status":"10002","data":"该用户不存在"}')
+            // {
+            //     document.getElementById("promot_inner").style.display="block";
+            // }
+            // if(xmlhttp.responseText='{"status":"10000","data":"注册成功"}')
+            // {
+            //     window.location.href="10000.html";
+            // }
+            if(xmlhttp='{"status":"10001","data":"用户名或密码错误"}')
+            {
+                document.getElementById("promot_inner").style.display="block";
+            }
+            if(xmlhttp='{"status":"10002","data":"该用户不存在"}')
+            {
+                document.getElementById("promot_inner").style.display="block";
+            }
+            if(xmlhttp='{"status":"10000","data":"注册成功"}')
+            {
+                window.location.href="10000.html";
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="topblock1"> </div>
+<div class="topblock2"> </div>
+<div class="topblock3">
+<input type="text" name="search" >
+</div>
+<img  class="pct1" src="https://img.t.sinajs.cn/t5/style/images/register/logo_big.png?id=1395992824012">
+<div class="icon">
+    <ul class="icon_ul">
+        <li class="icon_li">
+            <a href="https://weibo.com/">
+                <img class="pct2" src="images\房子 (1).png">
+                <span class="text_top">首页</span>
+            </a>
+        </li>
+        <li class="icon_li">
+            <a href="https://weibo.com/">
+                <img class="pct2" src="images\视频 (1).png">
+                <span class="text_top">视频</span>
+            </a>
+        </li>
+        <li class="icon_li"> 
+            <a href="https://weibo.com/">
+                <img class="pct2" src="images\发现-24 (1).png">
+                <span class="text_top">发现</span>
+            </a>
+        </li>
+        <li class="icon_li">
+            <a href="https://weibo.com/">
+                <img class="pct2" src="images\游戏管理.png">
+                <span class="text_top">游戏</span>
+            </a>
+        </li>
+    </ul>
+    <div class="icon_character">
+        <ul class="icon_character_ul">
+            <li class="icon_character_li">
+                <a href="register.html">
+                    <span>注册</span>
+                </a>
+            </li>
+            <li class="icon_character_li">
+                        <span>丨</span>
+                </li>
+            <li class="icon_character_li">
+                    <a href="https://weibo.com/">
+                        <span>登录</span>
+                    </a>
+                </li>
+        </ul>
+    </div>
+</div>
+<div class="choose">
+    <ul class="choose_ul">
+        <li class="choose_li1">
+            <a href="https://weibo.com/">热门</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">头条</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">视频</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">新鲜事</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">榜单</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">搞笑</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">社会</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">时尚</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">电影</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">美女</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">体育</a>
+        </li>
+        <li class="choose_li">
+            <a href="https://weibo.com/">动漫</a>
+        </li>
+    </ul>
+</div>
+<div class="banner">
+<div class="login">
+    <div class="login_box">
+        <div class="innerheader">
+            <b>
+                账号登录
+            </b>
+            <b>
+                安全登录
+            </b>
+        </div>
+        <div class="loginbanner">
+        <form action="Login" method="post" target="form">
+        <div class="loginbanner_input">
+        <img src="images/用户.png">
+        <input type="text" name="手机号" placeholder="手机号" maxlength="11" oninput = "value=value.replace(/[^\d]/g,'')">
+        <br>
+        <img src="images/密码.png">
+        <input type="password" name="密码" placeholder="密码">
+        </div>
+        <br><br><br><br>
+        <input type="submit" value="登录" style="background:#fa7d3c;border:1px solid rgb(255, 102, 0);width:200px;height:30px;color:white;font-size: 17px;text-align: center;    position:relative;
+        left:15%;">
+        <br>
+        <div class="loginbanner_zhuce">
+        <span style="color:rgba(133, 127, 127, 0.8);font-size:6px;margin-left:25px;">还没有微博?</span>
+        <a  href="register.html" >立即注册！</a>
+        </div>
+        </form>
+        <iframe name="form" id="form" style="display:none"></iframe>
+        </div>
+
+
+    </div>
+</div>
+</div>
+<div id="prompt" >
+    <div id="promot_inner1">
+        <img src="images\提示.png" style="vertical-align: middle;width:20px;">
+        <span style="font-size:10px;">用户名或密码错误。<a href="https://help.weibo.com/faq/q/85/12606#12606" style="font-size: 10px;text-decoration: none;color:#fa7d3c;">查看帮助</a></span>
+        <input type="button" value="×" style="background:transparent;position:relative;left:5px;border:0;" >
+    </div>
+    <div id="promot_inner2">
+        <img src="images\提示.png" style="vertical-align: middle;width:20px;">
+        <span style="font-size:10px;">该用户不存在。<a href="https://help.weibo.com/faq/q/85/12606#12606" style="font-size: 10px;text-decoration: none;color:#fa7d3c;">查看帮助</a></span>
+        <input type="button" value="×" style="background:transparent;position:relative;left:5px;border:0;" >
+    </div>
+
+
+</div>
+</body>
+</html>
