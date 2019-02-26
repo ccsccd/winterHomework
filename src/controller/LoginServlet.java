@@ -59,9 +59,6 @@ public class LoginServlet extends HttpServlet {
         writer.write(res);
         writer.flush();
         writer.close();
-        if(res.equals(OK)){
-//            resp.sendRedirect();
-        }
     }
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

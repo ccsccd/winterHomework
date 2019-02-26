@@ -187,4 +187,25 @@ public class MessageListDaoImpl implements MessageListDao {
         }
         return fansCount;
     }
+    @Override
+    public int getUserWeiboCount(int userId){
+        Connection con  = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int weiboCount = 0;
+        try {
+            con = JDBCUtil.getConnection();
+            pstmt = con.prepareStatement("select count(m.message_userId) from message m where m.message_userId = ?");
+            pstmt.setInt(1, userId);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                weiboCount = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            close(rs, pstmt, con);
+        }
+        return weiboCount;
+    }
 }

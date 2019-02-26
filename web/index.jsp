@@ -14,6 +14,7 @@
   <div style="text-align:center;margin-top: 10%">
     <p> <a href="main.html">微博主页</a></p>
     <p> <a href="register.html">微博注册页</a></p>
+    <p> <a href="user_home.html">个人页面</a></p>
   </div>
   </body>
 </html>

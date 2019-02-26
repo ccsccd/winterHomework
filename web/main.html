@@ -17,7 +17,8 @@
                     function (txt) {
                         var obj = JSON.parse(txt);
                         if (obj.status == "10000") {
-                            window.open("index.jsp");
+                            alert(obj.data)
+                            window.open("user_home.html");
                         }
                         else if (obj.status == "10001") {
                             $("#promot_inner1").css({"display": "block"});
@@ -30,8 +31,7 @@
             else if ($(".username").val().length != 11 || $(".password").val().length > 20 || $(".password").val().length < 6) {
                 alert("请正确填写用户名和密码！");
             }
-        };
-
+        }
         function close1() {
             $("#promot_inner1").css({"display": "none"});
         }
@@ -78,7 +78,7 @@
     <div class="icon_character">
         <ul class="icon_character_ul">
             <li class="icon_character_li">
-                <a href="images\微博注册页.html">
+                <a href="register.html">
                     <span>注册</span>
                 </a>
             </li>

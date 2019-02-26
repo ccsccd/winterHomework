@@ -10,12 +10,13 @@ public class User {
     private int bday;
     private int followCount;
     private int fansCount;
+    private int weiboCount;
     private String introduction;
 
     public User() {
     }
 
-    public User(int id, String phone, String nickname, int byear, int bmonth, int bday, int followCount, int fansCount, String introduction) {
+    public User(int id, String phone, String nickname, int byear, int bmonth, int bday, int followCount, int fansCount,int weiboCount, String introduction) {
         this.id = id;
         this.phone = phone;
         this.nickname = nickname;
@@ -24,6 +25,7 @@ public class User {
         this.bday = bday;
         this.followCount = followCount;
         this.fansCount = fansCount;
+        this.weiboCount = weiboCount;
         this.introduction = introduction;
     }
 
@@ -96,6 +98,10 @@ public class User {
     public void setFansCount(int fansCount) {
         this.fansCount = fansCount;
     }
+
+    public int getWeiboCount() { return weiboCount; }
+
+    public void setWeiboCount(int weiboCount) { this.weiboCount = weiboCount; }
 
     public String getIntroduction() { return introduction; }
 

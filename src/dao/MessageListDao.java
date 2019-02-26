@@ -44,4 +44,11 @@ public interface MessageListDao {
      * @return
      */
     int getFansCount(int userId);
+
+    /**
+     * 获得用户所发微博数
+     * @param userId
+     * @return
+     */
+    int getUserWeiboCount(int userId);
 }

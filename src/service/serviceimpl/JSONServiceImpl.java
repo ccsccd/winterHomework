@@ -144,6 +144,7 @@ public class JSONServiceImpl implements JSONService {
                 .append(",\"nickname\":\"").append(user.getNickname())
                 .append("\",\"followCount\":").append(user.getFollowCount())
                 .append(",\"fansCount\":").append(user.getFansCount())
+                .append(",\"weiboCount\":").append(user.getWeiboCount())
                 .append(",\"introduction\":\"").append(user.getIntroduction())
                 .append("\"");
         if (sb.charAt(sb.length() - 1) == ',') {

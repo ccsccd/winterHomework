@@ -54,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
         writer.flush();
         writer.close();
         if(res.equals(OK)){
-            resp.sendRedirect(req.getContextPath() + "/10000.html");
+            resp.sendRedirect(req.getContextPath() + "/success.html");
         }
     }
     @Override
