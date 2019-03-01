@@ -17,8 +17,8 @@
                     function (txt) {
                         var obj = JSON.parse(txt);
                         if (obj.status == "10000") {
-                            alert(obj.data)
-                            window.open("user_home.html");
+                            alert(obj.data);
+                            window.location.href="user_home.html";
                         }
                         else if (obj.status == "10001") {
                             $("#promot_inner1").css({"display": "block"});
@@ -147,7 +147,7 @@
             <div class="loginbanner">
                 <div class="loginbanner_input">
                     <img src="images\用户.png">
-                    <input placeholder="请输入账号" type="text" class="username">
+                    <input placeholder="请输入手机号" type="text" class="username" maxlength="11" oninput = "value=value.replace(/[^\d]/g,'')">
                     <br>
                     <img src="images\密码.png">
                     <input placeholder="请输入密码" type="password" class="password">

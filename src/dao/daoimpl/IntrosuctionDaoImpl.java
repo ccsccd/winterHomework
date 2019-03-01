@@ -18,7 +18,7 @@ public class IntrosuctionDaoImpl implements IntrosuctionDao {
         ResultSet rs = null;
         try {
             con = JDBCUtil.getConnection();
-            pstmt = con.prepareStatement("update user set user_introducton = ? where user_id = ?");
+            pstmt = con.prepareStatement("update user set user_introduction = ? where user_id = ?");
             pstmt.setString(1,content);
             pstmt.setInt(2,userId);
             pstmt.executeUpdate();

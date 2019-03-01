@@ -12,11 +12,12 @@ public class User {
     private int fansCount;
     private int weiboCount;
     private String introduction;
+    private String avatar;
 
     public User() {
     }
 
-    public User(int id, String phone, String nickname, int byear, int bmonth, int bday, int followCount, int fansCount,int weiboCount, String introduction) {
+    public User(int id, String phone, String nickname, int byear, int bmonth, int bday, int followCount, int fansCount, int weiboCount, String introduction, String avatar) {
         this.id = id;
         this.phone = phone;
         this.nickname = nickname;
@@ -27,9 +28,12 @@ public class User {
         this.fansCount = fansCount;
         this.weiboCount = weiboCount;
         this.introduction = introduction;
+        this.avatar = avatar;
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -99,11 +103,27 @@ public class User {
         this.fansCount = fansCount;
     }
 
-    public int getWeiboCount() { return weiboCount; }
+    public int getWeiboCount() {
+        return weiboCount;
+    }
 
-    public void setWeiboCount(int weiboCount) { this.weiboCount = weiboCount; }
+    public void setWeiboCount(int weiboCount) {
+        this.weiboCount = weiboCount;
+    }
 
-    public String getIntroduction() { return introduction; }
+    public String getIntroduction() {
+        return introduction;
+    }
 
-    public void setIntroduction(String introduction) { this.introduction = introduction; }
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }

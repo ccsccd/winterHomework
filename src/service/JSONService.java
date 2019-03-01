@@ -21,4 +21,5 @@ public interface JSONService {
     String usersToJson(List<User> userList);
     String messagesToJson2(List<Message> messageList);
     String usersToJson2(User user);
+    String usersToJson3(List<User> userList);
 }

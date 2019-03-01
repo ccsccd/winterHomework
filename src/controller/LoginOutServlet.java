@@ -16,7 +16,7 @@ public class LoginOutServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json;charset=utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         HttpSession session = req.getSession(false);
         if(session!=null){
         session.removeAttribute("已登录用户");
@@ -28,7 +28,6 @@ public class LoginOutServlet extends HttpServlet {
         writer.write(OK);
         writer.flush();
         writer.close();
-        resp.sendRedirect("/main.html");
         }
     }
     @Override

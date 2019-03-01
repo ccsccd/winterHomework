@@ -117,7 +117,7 @@ public class MessageListDaoImpl implements MessageListDao {
         List<Message> list = new ArrayList<Message>();
         try {
             con = JDBCUtil.getConnection();
-            pstmt = con.prepareStatement("select u.user_nickname,u.user_phone,m.* from message m,user u where m.message_userId = u.user_id AND message_parentId = ? order by m.message_id desc");
+            pstmt = con.prepareStatement("select u.user_nickname,u.user_phone,u.user_avatar,m.* from message m,user u where m.message_userId = u.user_id AND message_parentId = ? order by m.message_id desc");
             pstmt.setInt(1, parentId);
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -125,11 +125,13 @@ public class MessageListDaoImpl implements MessageListDao {
                 User user = new User();
                 user.setNickname(rs.getString("user_nickname"));
                 user.setPhone(rs.getString("user_phone"));
+                user.setAvatar(rs.getString("user_avatar"));
                 message.setMessageId(rs.getInt("message_id"));
                 message.setParentId(rs.getInt("message_parentId"));
                 message.setWebText(rs.getString("message_webText"));
                 message.setUserId(rs.getInt("message_userId"));
                 message.setMessageType(rs.getString("message_type"));
+                message.setTime(rs.getString("message_time"));
                 message.setUser(user);
                 MessageListDao messageListDao = new MessageListDaoImpl();
                 int likeCount = messageListDao.getLikeCount(rs.getInt("message_id"));

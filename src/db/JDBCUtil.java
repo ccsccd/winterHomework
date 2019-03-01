@@ -7,7 +7,7 @@ public class JDBCUtil {
     private final static String URL = "jdbc:mysql://localhost/weibo"
             + "?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true";
     private final static String USER = "root";
-    private final static String PASSWORD = "newpass";
+    private final static String PASSWORD = "123";
 
     static {//加载JDBC驱动程序
         try {

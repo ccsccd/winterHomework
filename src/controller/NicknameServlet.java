@@ -17,14 +17,15 @@ import java.io.OutputStreamWriter;
 @WebServlet("/User/SetNickname")
 public class NicknameServlet extends HttpServlet {
     private static final String OK = "{\"status\":\"10000\",\"data\":\"修改成功\"}";
-    private static final String ERROR = "{\"status\":\"10001\",\"data\":\"修改失败\"}";
+    private static final String ERROR1 = "{\"status\":\"10001\",\"data\":\"修改失败\"}";
+    private static final String ERROR2 = "{\"status\":\"10002\",\"data\":\"昵称不能为空\"}";
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         String nickname = req.getParameter("昵称");
-        String res = null;
+        String res = ERROR2;
         HttpSession session = req.getSession(false);
         User user = new User();
         if (session != null && !nickname.equals("")) {
@@ -34,7 +35,7 @@ public class NicknameServlet extends HttpServlet {
             if (nicknameDao.setNickname(user.getId(), nickname)) {
                 res = OK;
             } else {
-                res = ERROR;
+                res = ERROR1;
             }
         }
         BufferedWriter writer = new BufferedWriter(

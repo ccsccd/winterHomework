@@ -71,6 +71,17 @@ body{
     font-size:14px;
     float:left;
 }
+.ffirst_span1{
+    color:red;
+    padding-right: 4px;
+    float:left;
+
+}
+.ffirst_span2{
+    color:black;
+    font-size:14px;
+    float:left;
+}
 .first_line_input{
     border:2px solid red;
     vertical-align:middle;

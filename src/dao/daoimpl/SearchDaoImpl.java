@@ -52,6 +52,7 @@ public class SearchDaoImpl implements SearchDao {
                 message.setWebText(rs.getString("message_webText"));
                 message.setParentId(rs.getInt("message_parentId"));
                 message.setMessageType(rs.getString("message_type"));
+                message.setTime((rs.getString("message_time")));
                 message.setUser(user);
                 MessageListDao messageListDao = new MessageListDaoImpl();
                 int likeCount = messageListDao.getLikeCount(rs.getInt("message_id"));

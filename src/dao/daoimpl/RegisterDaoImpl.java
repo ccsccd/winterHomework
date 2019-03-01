@@ -55,7 +55,7 @@ public class RegisterDaoImpl implements RegisterDao {
         ResultSet rs=null;
         try {
             con=JDBCUtil.getConnection();
-            pstmt = con.prepareStatement("insert into user values(null,?,?,?,?,?,?,?)");
+            pstmt = con.prepareStatement("insert into user values(null,?,?,?,?,?,?,?,?)");
             pstmt.setString(1, user.getPhone());
             pstmt.setString(2, user.getPassword());
             pstmt.setString(3,user.getNickname());
@@ -63,6 +63,7 @@ public class RegisterDaoImpl implements RegisterDao {
             pstmt.setInt(5, user.getBmonth());
             pstmt.setInt(6, user.getBday());
             pstmt.setString(7,"这个人很懒死了,什么都没有写");
+            pstmt.setString(8,"images/用户圆.png");
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

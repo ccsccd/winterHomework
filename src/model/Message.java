@@ -12,6 +12,7 @@ public class Message {
     private User user;
     private List<Message> childContent;
     private List<User> list;
+    private String time;
 
     public Message(int messageId, String webText, int userId, int parentId, String messageType, int likeCount, User user, List<Message> childContent, List<User> list) {
         this.messageId = messageId;
@@ -98,5 +99,13 @@ public class Message {
 
     public void setList(List<User> list) {
         this.list = list;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

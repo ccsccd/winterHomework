@@ -1,7 +1,9 @@
 package controller;
 
 import dao.MessageDao;
+import dao.MessageListDao;
 import dao.daoimpl.MessageDaoImpl;
+import dao.daoimpl.MessageListDaoImpl;
 import model.Message;
 import model.User;
 
@@ -20,6 +22,7 @@ public class MessageServlet extends HttpServlet {
     private static final String OK = "{\"status\":\"10000\",\"data\":\"发布成功\"}";
     private static final String ERROR1 = "{\"status\":\"10001\",\"data\":\"发布失败\"}";
     private static final String ERROR2 = "{\"status\":\"10002\",\"data\":\"发布内容不能为空\"}";
+
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
@@ -31,30 +34,32 @@ public class MessageServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         Message message = new Message();
         User user = new User();
-        if(session != null && webText!=""){
-            user = (User)session.getAttribute("已登录用户");
+        if (session != null && !webText.equals("")) {
+            user = (User) session.getAttribute("已登录用户");
             message.setWebText(webText);
             message.setUserId(user.getId());
             message.setParentId(parentId);
             message.setMessageType(messageType);
             MessageDao messageDao = new MessageDaoImpl();
-            if(messageDao.insertMessage(message)){
+            if (messageDao.insertMessage(message)) {
                 res = OK;
-            }else {
-                res=ERROR1;
+            } else {
+                res = ERROR1;
             }
+            MessageListDao messageListDao = new MessageListDaoImpl();
+            user.setWeiboCount(messageListDao.getUserWeiboCount(user.getId()));
         }
         BufferedWriter writer = new BufferedWriter(
                 new OutputStreamWriter(
-                        resp.getOutputStream(),"UTF-8"
+                        resp.getOutputStream(), "UTF-8"
                 )
         );
         writer.write(res);
         writer.flush();
         writer.close();
     }
-    @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect(req.getContextPath() + "/main.html");
+        @Override
+        public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            resp.sendRedirect(req.getContextPath() + "/main.html");
+        }
     }
-}

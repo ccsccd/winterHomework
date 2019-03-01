@@ -8,7 +8,6 @@ import java.util.List;
 public interface MessageListDao {
     /**
      * 获取所有的微博
-     * @param
      * @return
      */
     List<Message> getAllMessage();
