@@ -150,7 +150,7 @@ public class JSONServiceImpl implements JSONService {
                 .append("\",\"webText\":\"").append(message.getWebText())
                 .append("\",\"messageType\":\"").append(message.getMessageType())
                 .append("\",\"likeCount\":").append(message.getLikeCount())
-                .append(",\"time\":").append(message.getTime())
+                .append(",\"time\":\"").append(message.getTime())
                 .append("\"");
         if (sb.charAt(sb.length() - 1) == ',') {
             sb.delete(sb.length() - 1, sb.length());

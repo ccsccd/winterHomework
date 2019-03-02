@@ -33,14 +33,14 @@ public class SearchServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
-        String type = req.getParameter("类型");
+        String type = req.getParameter("type");
         String res =null;
         if(type.equals("message")){
-            String keyword = req.getParameter("关键词");
+            String keyword = req.getParameter("key");
             List<Message> messageList = searchDao.getNeededMessage(keyword);
             res = jsonService.messagesToJson2(messageList);
         }else if(type.equals("user")) {
-            String keyword = req.getParameter("关键词");
+            String keyword = req.getParameter("key");
             List<User> userList = searchDao.getNeededUser(keyword);
             res = jsonService.usersToJson(userList);
         }
