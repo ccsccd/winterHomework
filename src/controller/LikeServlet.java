@@ -21,7 +21,7 @@ public class LikeServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json;charset=utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         String messageId = req.getParameter("信息ID");
         String res = null;
         HttpSession session = req.getSession();

@@ -12,6 +12,8 @@
             var div2 = document.createElement("div");
             var div1 = document.createElement("div");
             var div3 = document.createElement("div");
+            var div3_1 = document.createElement("div");
+            var div3_2 = document.createElement("div");
             var im = document.createElement("img");
             var div2_1 = document.createElement("div");
             var div2_2 = document.createElement("div");
@@ -21,26 +23,45 @@
             div2.appendChild(im);
             div2.appendChild(div2_1);
             div2.appendChild(div2_2);
+            div3.appendChild(div3_1);
+            div3.appendChild(div3_2);
+            div3_2.innerHTML="0";
+            div3_2.id="div3_2_"+i.toString();
+            div3_2.style.cssText="position:relative;left:50px;bottom:15px;"
             div2_1.innerHTML="用户";
             div2_1.id="div2_1_"+i.toString();
-            div2_1.style.cssText="position:absolute;top:15px;left:100px;height:60px;font-size:15px;"
+            div2_1.style.cssText="position:absolute;top:15px;left:100px;height:60px;font-size:15px;";
             div2_2.innerHTML= myDate.toLocaleString( );
             div2_2.id="div2_2_"+i.toString();
-            div2_2.style.cssText="position:absolute;top:30px;left:100px;height:60px;font-size:10px;color:#cccccc;"
+            div2_2.style.cssText="position:absolute;top:40px;left:100px;height:60px;font-size:10px;color:#cccccc;";
             im.src="https://thecatapi.com/api/images/get?format=src&type=gif";
             im.id="im_"+i.toString();
-            im.style.cssText =" width:60px;position:absolute;top:15px;left:15px;height:60px;"
+            im.style.cssText =" width:60px;position:absolute;top:15px;left:15px;height:60px;";
             div.style.cssText = 'border:1px solid #ccc;min-height:120px;width: 600px; height:auto; border-radius: 2px;background:white;z-index:1;position:relative;left:350px;bottom:265px;margin-top:10px;font-size:15px;';
             div1.id="div1_"+i.toString();
-            div1.style.cssText = "min-height:80px;width:560px;height:auto;position:relative;left:20px;"
-            div2.style.cssText ="width:600px;background:white;height:80px;"
-            div3.style.cssText ="width:600px;background:white;height:30px;"
+            div1.style.cssText = "min-height:80px;width:560px;height:auto;position:relative;left:20px;";
+            div2.style.cssText ="width:600px;background:white;height:80px;";
+            div3.style.cssText ="width:600px;background:white;height:30px;";
+            var id = document.createElement("div");
+            div.appendChild(id);
+            id.id="id_"+i.toString();
+            id.style.cssText = "display:none";
             document.body.appendChild(div);
             var aa = document.createElement("input");
             aa.setAttribute('type', 'button');
             aa.setAttribute('value', '点赞');
+            aa.setAttribute('onclick','like('+i.toString()+')')
             aa.style.cssText="border:0px;background:transparent;color:#fa7d3c;position:relative;top:5px;left:10px;";
             div3.appendChild(aa);
+            div3_1.appendChild(aa);
+        }
+        function new2(i) {
+            var user1 = document.createElement("div");
+            var user2 = document.createElement("div");
+            var user3 = document.createElement("div");
+            document.getElementById("other_li1").appendChild(user1);
+            document.getElementById("other_li2").appendChild(user2);
+            document.getElementById("other_li3").appendChild(user3);
         }
         function Btn() {
             var text = document.getElementById("comment_div").value;
@@ -78,21 +99,61 @@
                     document.getElementById("weibo_count").innerHTML = obj.data[0].weiboCount;
                     document.getElementById("introduction").innerHTML = obj.data[0].introduction;
                     document.getElementById("avatar").src = obj.data[0].avatar.toString();
-                })
+                });
             $.get("/Info",
                 function (txt) {
                     var obj = JSON.parse(txt);
                     for(var i=0;i<obj.data.length;i++){
-                        if(userId==obj.data[i].userId){
                         new1(i);
                         document.getElementById("div2_1_"+i.toString()).innerHTML = obj.data[i].nickname;
                         document.getElementById("div2_2_"+i.toString()).innerHTML = obj.data[i].time;
                         document.getElementById("im_"+i.toString()).src = obj.data[i].userAvatar;
                         document.getElementById("div1_"+i.toString()).innerHTML = obj.data[i].webText;
-                        }
+                        document.getElementById("id_"+i.toString()).innerHTML = obj.data[i].messageId;
+                        document.getElementById("div3_2_"+i.toString()).innerHTML = obj.data[i].likeCount
+                    }
+                });
+            // $.get("/UserList",
+            //     function (txt) {
+            //         var obj = JSON.parse(txt);
+            //         for(var i=0;i<obj.data.length;i++){
+            //             if(userId!=obj.data[i].userId){
+            //                 new2(i);
+            //                 document.getElementById("div2_1_"+i.toString()).innerHTML = obj.data[i].nickname;
+            //                 document.getElementById("div2_2_"+i.toString()).innerHTML = obj.data[i].time;
+            //                 document.getElementById("im_"+i.toString()).src = obj.data[i].userAvatar;
+            //                 document.getElementById("div1_"+i.toString()).innerHTML = obj.data[i].webText;
+            //                 document.getElementById("id_"+i.toString()).innerHTML = obj.data[i].messageId;
+            //             }
+            //         // name = obj.data[0].nickname;
+            //         // follow = obj.data[0].followCount;
+            //         // fans = obj.data[0].fansCount;
+            //         // user1.innerHTML = name;
+            //         // document.getElementById("other_li1").appendChild(user1);
+            //         // user2.innerHTML = name;
+            //         // document.getElementById("other_li2").appendChild(user2);
+            //         // user3.innerHTML = name;
+            //         // document.getElementById("other_li3").appendChild(user3);
+            //         }
+            //     });
+        })
+        function like(i) {
+            $.post("/User/LikeAction",
+                {
+                    信息ID: parseInt(document.getElementById("id_"+i.toString()).innerHTML)
+                }
+                ,
+                function (txt) {
+                    var obj = JSON.parse(txt);
+                    if (obj.status == "10000") {
+                        document.getElementById("div3_2_"+i.toString()).innerHTML =parseInt(document.getElementById("div3_2_"+i.toString()).innerHTML) + parseInt("1");
+                        alert(obj.data);
+                    } else if (obj.status == "10001") {
+                        document.getElementById("div3_2_"+i.toString()).innerHTML =parseInt(document.getElementById("div3_2_"+i.toString()).innerHTML) + parseInt("-1");
+                        alert(obj.data);
                     }
                 })
-        })
+        }
         function login_out() {
             $.post("/User/LoginOut",
                 {
@@ -187,7 +248,7 @@
 <div class="icon">
     <ul class="icon_ul">
         <li class="icon_li">
-            <a href="https://weibo.com/">
+            <a href="main.html">
                 <img class="pct2" src="images\房子 (1).png">
                 <span class="text_top">首页</span>
             </a>
@@ -211,7 +272,7 @@
             </a>
         </li>
         <li class="icon_li">
-            <a href="images\个人主页.html">
+            <a href="https://weibo.com/">
                 <img class="pct2" src="images\小人.png">
                 <span class="text_top">用户</span>
             </a>

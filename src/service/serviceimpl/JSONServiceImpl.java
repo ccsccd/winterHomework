@@ -109,7 +109,7 @@ public class JSONServiceImpl implements JSONService {
     //ok
     private String createJson(Message message) {
         StringBuffer sb = new StringBuffer();
-        sb.append("{\"meassageId\":").append(message.getMessageId())
+        sb.append("{\"messageId\":").append(message.getMessageId())
                 .append(",\"nickname\":\"").append(message.getUser().getNickname())
                 .append("\",\"userId\":").append(message.getUserId())
                 .append(",\"userAvatar\":\"").append(message.getUser().getAvatar())
@@ -145,7 +145,7 @@ public class JSONServiceImpl implements JSONService {
     //ok
     private String createJson3(Message message) {
         StringBuffer sb = new StringBuffer();
-        sb.append("{\"meassageId\":").append(message.getMessageId())
+        sb.append("{\"messageId\":").append(message.getMessageId())
                 .append(",\"nickname\":\"").append(message.getUser().getNickname())
                 .append("\",\"webText\":\"").append(message.getWebText())
                 .append("\",\"messageType\":\"").append(message.getMessageType())

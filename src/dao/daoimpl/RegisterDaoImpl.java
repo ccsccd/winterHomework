@@ -62,7 +62,7 @@ public class RegisterDaoImpl implements RegisterDao {
             pstmt.setInt(4, user.getByear());
             pstmt.setInt(5, user.getBmonth());
             pstmt.setInt(6, user.getBday());
-            pstmt.setString(7,"这个人很懒死了,什么都没有写");
+            pstmt.setString(7,"这个人懒死了,什么都没有写");
             pstmt.setString(8,"images/用户圆.png");
             pstmt.executeUpdate();
         } catch (SQLException e) {
